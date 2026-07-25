@@ -1,4 +1,7 @@
-/* Codestry design system — dark navy theme inspired by neon.tech */
+/* ═══════════════════════════════════════════════════════════════
+   Codestry design system — 2026
+   Deep-space navy, aurora accents, glass surfaces, display type.
+   ═══════════════════════════════════════════════════════════════ */
 
 :root {
   /* Brand palette (approved) */
@@ -7,29 +10,31 @@
   --cyan: #00d4ff;
 
   /* Surfaces */
-  --bg: #060b16;
-  --bg-soft: #0a1224;
-  --panel: rgba(11, 29, 58, 0.45);
-  --panel-solid: #0c1830;
-  --border: rgba(148, 178, 255, 0.14);
-  --border-strong: rgba(148, 178, 255, 0.28);
+  --bg: #04070f;
+  --bg-soft: #070d1c;
+  --panel: rgba(13, 27, 52, 0.38);
+  --glass: rgba(10, 20, 40, 0.55);
+  --border: rgba(140, 170, 255, 0.12);
+  --border-strong: rgba(140, 170, 255, 0.26);
 
   /* Text */
-  --text: #e7edf8;
-  --text-muted: #94a3bf;
-  --text-faint: #64748f;
+  --text: #eef2fb;
+  --text-muted: #8fa0be;
+  --text-faint: #5c6a86;
 
   /* Effects */
   --gradient: linear-gradient(92deg, var(--blue), var(--cyan));
-  --glow-cyan: 0 0 24px rgba(0, 212, 255, 0.35);
-  --radius: 14px;
-  --radius-lg: 20px;
+  --glow-cyan: 0 8px 40px rgba(0, 212, 255, 0.28);
+  --radius: 18px;
+  --radius-lg: 26px;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Type */
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  --header-h: 72px;
+  --header-h: 64px;
 }
 
 * {
@@ -46,75 +51,71 @@ body {
   color: var(--text);
   font-family: var(--font-sans);
   font-size: 16px;
-  line-height: 1.6;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
 
 h1, h2, h3, h4 {
   margin: 0;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  line-height: 1.15;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
 }
 
-p {
-  margin: 0;
+p { margin: 0; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; }
+
+::selection {
+  background: rgba(0, 212, 255, 0.28);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-button {
-  font-family: inherit;
-}
-
-/* Shared layout helpers */
+/* ── Layout helpers ─────────────────────────────── */
 .container {
-  width: min(1160px, 100% - 48px);
+  width: min(1180px, 100% - 48px);
   margin-inline: auto;
 }
 
 section[id] {
-  scroll-margin-top: calc(var(--header-h) + 16px);
+  scroll-margin-top: calc(var(--header-h) + 32px);
 }
 
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: var(--font-mono);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.22em;
   color: var(--cyan);
 
   &::before {
     content: '';
-    width: 24px;
-    height: 1px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
     background: var(--gradient);
+    box-shadow: 0 0 12px rgba(0, 212, 255, 0.8);
   }
 }
 
 .section-title {
-  font-size: clamp(28px, 4vw, 42px);
-  margin-top: 14px;
+  font-size: clamp(32px, 4.6vw, 52px);
+  margin-top: 18px;
+  text-wrap: balance;
 }
 
 .section-sub {
   color: var(--text-muted);
-  max-width: 620px;
-  margin-top: 14px;
+  max-width: 640px;
+  margin-top: 16px;
   font-size: 17px;
+  text-wrap: pretty;
 }
 
 .gradient-text {
@@ -124,52 +125,162 @@ section[id] {
   color: transparent;
 }
 
-/* Buttons */
+.shimmer-text {
+  background: linear-gradient(105deg,
+    #ffffff 0%, #b9d4ff 22%, var(--cyan) 40%, var(--blue) 58%, #b9d4ff 76%, #ffffff 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-sweep 7s linear infinite;
+}
+
+@keyframes shimmer-sweep {
+  to { background-position: -220% 0; }
+}
+
+/* ── Buttons ────────────────────────────────────── */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 12px 24px;
-  border-radius: 10px;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 999px;
   font-size: 15px;
   font-weight: 600;
+  letter-spacing: -0.01em;
   cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
   border: 1px solid transparent;
+  transition: transform 0.25s var(--ease-out), box-shadow 0.3s ease,
+    background 0.25s ease, border-color 0.25s ease;
   white-space: nowrap;
 
+  .arrow {
+    transition: transform 0.25s var(--ease-out);
+  }
+
+  &:hover .arrow {
+    transform: translateX(4px);
+  }
+
   &:active {
-    transform: translateY(1px);
+    transform: scale(0.98);
   }
 }
 
 .btn-primary {
   background: var(--gradient);
-  color: #04121f;
-  box-shadow: 0 0 0 rgba(0, 212, 255, 0);
+  color: #030a14;
+  box-shadow: 0 4px 24px rgba(30, 91, 255, 0.35);
 
   &:hover {
     box-shadow: var(--glow-cyan);
+    transform: translateY(-1px);
   }
 }
 
 .btn-ghost {
-  background: rgba(148, 178, 255, 0.06);
+  background: rgba(140, 170, 255, 0.06);
   border-color: var(--border);
   color: var(--text);
+  backdrop-filter: blur(12px);
 
   &:hover {
     border-color: var(--border-strong);
-    background: rgba(148, 178, 255, 0.1);
+    background: rgba(140, 170, 255, 0.11);
+    transform: translateY(-1px);
   }
 }
 
-/* Card base */
+/* ── Glass card base ────────────────────────────── */
 .card {
+  position: relative;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  backdrop-filter: blur(8px);
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.25s ease;
+  backdrop-filter: blur(14px);
+  transition: border-color 0.3s ease, transform 0.35s var(--ease-out),
+    box-shadow 0.35s ease;
+}
+
+/* Cursor spotlight (set --mx/--my via SpotlightDirective) */
+.spot {
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      340px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(0, 212, 255, 0.1),
+      transparent 62%
+    );
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
+}
+
+/* ── Scroll reveal (RevealDirective adds .in-view) ─ */
+.reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+  transition-delay: var(--reveal-delay, 0s);
+
+  &.in-view {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ── Scroll progress (CSS scroll-driven, progressive) */
+.scroll-progress {
+  display: none;
+}
+
+@supports (animation-timeline: scroll()) {
+  .scroll-progress {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient);
+    transform-origin: 0 50%;
+    transform: scaleX(0);
+    animation: scroll-grow linear;
+    animation-timeline: scroll(root);
+    z-index: 90;
+  }
+
+  @keyframes scroll-grow {
+    to { transform: scaleX(1); }
+  }
+}
+
+/* ── Motion safety ──────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
 }

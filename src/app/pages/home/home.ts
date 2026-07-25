@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ContactForm } from '../../components/contact-form/contact-form';
+import { Aurora } from '../../components/aurora/aurora';
+import { RevealDirective } from '../../shared/reveal.directive';
+import { SpotlightDirective } from '../../shared/spotlight.directive';
 
 interface Service {
   icon: 'web' | 'ai' | 'assist' | 'a11y' | 'ux' | 'cloud';
   title: string;
   description: string;
   points: string[];
+  wide?: boolean;
 }
 
 interface Step {
@@ -22,7 +26,7 @@ interface StackGroup {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, ContactForm],
+  imports: [RouterLink, ContactForm, Aurora, RevealDirective, SpotlightDirective],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
@@ -50,34 +54,35 @@ export class Home {
       description:
         'Enterprise-grade applications built with Angular, React, and Next.js — from greenfield builds to features inside large existing platforms.',
       points: ['Dashboards, portals & SPAs', 'Micro-frontends & module federation', 'Reusable component libraries'],
+      wide: true,
     },
     {
       icon: 'ai',
       title: 'AI Service Tools',
       description:
         'Practical AI built into your product: assistants, smart search, and automation powered by Claude, GPT, and modern agent tooling.',
-      points: ['Chat assistants & copilots', 'Smart search & autocomplete', 'Workflow & document automation'],
+      points: ['Chat assistants & copilots', 'Smart search & autocomplete'],
     },
     {
       icon: 'assist',
       title: 'Technical Assistance',
       description:
         'Senior help exactly where your team is stuck — upgrades, performance, debugging, and long-term maintenance.',
-      points: ['Framework migrations (e.g. Angular 14 → 22)', 'Performance tuning & debugging', 'Code audits & ongoing support'],
+      points: ['Framework migrations (Angular 14 → 22)', 'Performance tuning & code audits'],
     },
     {
       icon: 'a11y',
       title: 'Accessibility & Compliance',
       description:
         'Section 508, WCAG, and ARIA done properly — proven in federal and healthcare environments where compliance is not optional.',
-      points: ['Section 508 / WCAG audits & fixes', 'Accessible component patterns', 'HIPAA-aware, regulated-environment builds'],
+      points: ['508 / WCAG audits & fixes', 'HIPAA-aware regulated builds'],
     },
     {
       icon: 'ux',
       title: 'UX/UI & Design Systems',
       description:
         'From Figma wireframes to production components — design and engineering under one roof, so nothing gets lost in translation.',
-      points: ['Wireframes & high-fidelity mockups', 'Design systems & style guides', 'Responsive, mobile-first builds'],
+      points: ['Wireframes & hi-fi mockups', 'Design systems & style guides'],
     },
     {
       icon: 'cloud',
@@ -85,6 +90,7 @@ export class Home {
       description:
         'The services behind the screen: Node.js and NestJS APIs, data layers, and CI/CD pipelines that ship safely and often.',
       points: ['REST & GraphQL services', 'MongoDB, SQL & data modeling', 'CI/CD on GitHub Actions, Azure & AWS'],
+      wide: true,
     },
   ];
 
