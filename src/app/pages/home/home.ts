@@ -155,11 +155,11 @@ export class Home {
   ];
 
   protected readonly terminalLines = [
-    { prompt: true, text: 'codestry init your-project' },
-    { prompt: false, text: '✓ scaffolding application' },
-    { prompt: false, text: '✓ wiring AI services' },
-    { prompt: false, text: '✓ accessibility · WCAG 2.2 AA' },
-    { prompt: false, text: '✓ tests passing · pipeline green' },
-    { prompt: false, text: '● live in production' },
+    { prompt: true, text: 'ng build --configuration production' },
+    { prompt: false, text: '✔ bundle complete — 91.2 kB transfer' },
+    { prompt: true, text: 'npm run test:e2e' },
+    { prompt: false, text: '✔ 148 passing · 0 flaky · a11y clean' },
+    { prompt: true, text: 'npm run deploy' },
+    { prompt: false, text: '↗ codestry.app — live in 14s' },
   ];
 }

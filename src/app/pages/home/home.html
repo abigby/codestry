@@ -7,14 +7,11 @@
   <div class="hero-fade" aria-hidden="true"></div>
 
   <div class="container hero-inner">
-    <p class="hero-badge">
-      <span class="badge-dot" aria-hidden="true"></span>
-      AI-native software studio
-    </p>
+    <p class="eyebrow hero-eyebrow">Software · AI · Technical assistance</p>
 
     <h1 class="hero-title">
       We build the software that<br />
-      <span class="shimmer-text">powers your business.</span>
+      <span class="accent-text">powers your business.</span>
     </h1>
 
     <p class="hero-sub">
@@ -23,10 +20,7 @@
     </p>
 
     <div class="hero-actions">
-      <a routerLink="/" fragment="contact" class="btn btn-primary">
-        Start a project
-        <span class="arrow" aria-hidden="true">→</span>
-      </a>
+      <a routerLink="/" fragment="contact" class="btn btn-primary">Start a project</a>
       <a routerLink="/" fragment="services" class="btn btn-ghost">Explore services</a>
     </div>
 
@@ -58,9 +52,9 @@
       @for (stat of stats; track stat.label; let i = $index) {
         <div class="stat" appReveal [revealDelay]="i * 90">
           @if (stat.count !== null) {
-            <span class="stat-value gradient-text" [appCountUp]="stat.count" [countSuffix]="stat.suffix ?? ''"></span>
+            <span class="stat-value" [appCountUp]="stat.count" [countSuffix]="stat.suffix ?? ''"></span>
           } @else {
-            <span class="stat-value gradient-text">{{ stat.display }}</span>
+            <span class="stat-value">{{ stat.display }}</span>
           }
           <span class="stat-label">{{ stat.label }}</span>
         </div>
@@ -75,10 +69,10 @@
   <div class="marquee">
     <div class="marquee-track">
       @for (industry of industries; track industry) {
-        <span class="marquee-item">{{ industry }}<span class="marquee-sep" aria-hidden="true">✦</span></span>
+        <span class="marquee-item">{{ industry }}<span class="marquee-sep" aria-hidden="true">·</span></span>
       }
       @for (industry of industries; track industry) {
-        <span class="marquee-item" aria-hidden="true">{{ industry }}<span class="marquee-sep">✦</span></span>
+        <span class="marquee-item" aria-hidden="true">{{ industry }}<span class="marquee-sep">·</span></span>
       }
     </div>
   </div>
@@ -142,13 +136,13 @@
 
 <!-- ═══════════════ AI ═══════════════ -->
 <section id="ai" class="section section-alt">
-  <div class="ai-glow" aria-hidden="true"></div>
   <div class="container ai-layout">
     <div class="ai-intro" appReveal>
       <p class="eyebrow">AI, applied</p>
-      <h2 class="section-title">AI that ships,<br />not slideware</h2>
+      <h2 class="section-title">AI in the product.<br />AI in the process.</h2>
       <p class="section-sub">
-        We put AI to work in two places: inside your product, and inside the process that builds it.
+        Two places where AI earns its keep — the features your users touch, and the pipeline that
+        builds them.
       </p>
     </div>
 
@@ -243,7 +237,6 @@
 
 <!-- ═══════════════ Contact ═══════════════ -->
 <section id="contact" class="section contact-section">
-  <div class="contact-glow" aria-hidden="true"></div>
   <div class="container contact-grid">
     <div class="contact-copy" appReveal>
       <p class="eyebrow">Contact</p>
