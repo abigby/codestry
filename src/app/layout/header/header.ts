@@ -11,9 +11,13 @@ interface NavLink {
   imports: [RouterLink],
   templateUrl: './header.html',
   styleUrl: './header.scss',
+  host: {
+    '(window:scroll)': 'onScroll()',
+  },
 })
 export class Header {
   protected readonly menuOpen = signal(false);
+  protected readonly scrolled = signal(false);
 
   protected readonly links: NavLink[] = [
     { label: 'Services', fragment: 'services' },
@@ -22,6 +26,10 @@ export class Header {
     { label: 'Stack', fragment: 'stack' },
     { label: 'About', fragment: 'about' },
   ];
+
+  protected onScroll(): void {
+    this.scrolled.set(window.scrollY > 12);
+  }
 
   protected toggleMenu(): void {
     this.menuOpen.update((open) => !open);
