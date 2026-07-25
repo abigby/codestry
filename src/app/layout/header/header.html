@@ -1,0 +1,41 @@
+<header class="site-header">
+  <div class="container header-inner">
+    <a routerLink="/" fragment="top" class="brand" (click)="closeMenu()">
+      <img src="brand/codestry-horizontal-white.svg" alt="Codestry" class="brand-logo" />
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+      @for (link of links; track link.fragment) {
+        <a routerLink="/" [fragment]="link.fragment" class="nav-link">{{ link.label }}</a>
+      }
+    </nav>
+
+    <div class="header-actions">
+      <a routerLink="/" fragment="contact" class="btn btn-primary btn-contact">Start a project</a>
+      <button
+        type="button"
+        class="menu-toggle"
+        [attr.aria-expanded]="menuOpen()"
+        aria-label="Toggle navigation menu"
+        (click)="toggleMenu()"
+      >
+        <span class="bar" [class.open]="menuOpen()"></span>
+        <span class="bar" [class.open]="menuOpen()"></span>
+        <span class="bar" [class.open]="menuOpen()"></span>
+      </button>
+    </div>
+  </div>
+
+  @if (menuOpen()) {
+    <nav class="nav-mobile" aria-label="Mobile">
+      @for (link of links; track link.fragment) {
+        <a routerLink="/" [fragment]="link.fragment" class="nav-link" (click)="closeMenu()">
+          {{ link.label }}
+        </a>
+      }
+      <a routerLink="/" fragment="contact" class="btn btn-primary" (click)="closeMenu()">
+        Start a project
+      </a>
+    </nav>
+  }
+</header>
