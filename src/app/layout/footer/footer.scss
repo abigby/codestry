@@ -68,11 +68,10 @@
 }
 
 .status-dot {
-  width: 8px;
-  height: 8px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--cyan);
-  box-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
 }
 
 @media (max-width: 720px) {

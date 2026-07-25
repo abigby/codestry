@@ -1,6 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════
-   Codestry design system — 2026
-   Deep-space navy, aurora accents, glass surfaces, display type.
+   Codestry design system — restrained dark, single accent.
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
@@ -11,11 +10,10 @@
 
   /* Surfaces */
   --bg: #04070f;
-  --bg-soft: #070d1c;
-  --panel: rgba(13, 27, 52, 0.38);
-  --glass: rgba(10, 20, 40, 0.55);
-  --border: rgba(140, 170, 255, 0.12);
-  --border-strong: rgba(140, 170, 255, 0.26);
+  --bg-soft: #070d1a;
+  --panel: #0a1220;
+  --border: rgba(140, 170, 255, 0.11);
+  --border-strong: rgba(140, 170, 255, 0.24);
 
   /* Text */
   --text: #eef2fb;
@@ -24,9 +22,8 @@
 
   /* Effects */
   --gradient: linear-gradient(92deg, var(--blue), var(--cyan));
-  --glow-cyan: 0 8px 40px rgba(0, 212, 255, 0.28);
-  --radius: 18px;
-  --radius-lg: 26px;
+  --radius: 14px;
+  --radius-lg: 18px;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Type */
@@ -34,7 +31,7 @@
   --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  --header-h: 64px;
+  --header-h: 60px;
 }
 
 * {
@@ -60,8 +57,8 @@ h1, h2, h3, h4 {
   margin: 0;
   font-family: var(--font-display);
   font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.08;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
 }
 
 p { margin: 0; }
@@ -70,12 +67,12 @@ img { max-width: 100%; display: block; }
 button { font-family: inherit; }
 
 ::selection {
-  background: rgba(0, 212, 255, 0.28);
+  background: rgba(0, 212, 255, 0.25);
 }
 
 /* ── Layout helpers ─────────────────────────────── */
 .container {
-  width: min(1180px, 100% - 48px);
+  width: min(1140px, 100% - 48px);
   margin-inline: auto;
 }
 
@@ -84,37 +81,25 @@ section[id] {
 }
 
 .eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
   font-family: var(--font-mono);
   font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 0.22em;
-  color: var(--cyan);
-
-  &::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--gradient);
-    box-shadow: 0 0 12px rgba(0, 212, 255, 0.8);
-  }
+  letter-spacing: 0.18em;
+  color: var(--text-faint);
 }
 
 .section-title {
-  font-size: clamp(32px, 4.6vw, 52px);
-  margin-top: 18px;
+  font-size: clamp(28px, 3.8vw, 44px);
+  margin-top: 14px;
   text-wrap: balance;
 }
 
 .section-sub {
   color: var(--text-muted);
-  max-width: 640px;
-  margin-top: 16px;
-  font-size: 17px;
+  max-width: 620px;
+  margin-top: 14px;
+  font-size: 16.5px;
   text-wrap: pretty;
 }
 
@@ -125,18 +110,12 @@ section[id] {
   color: transparent;
 }
 
-.shimmer-text {
-  background: linear-gradient(105deg,
-    #ffffff 0%, #b9d4ff 22%, var(--cyan) 40%, var(--blue) 58%, #b9d4ff 76%, #ffffff 100%);
-  background-size: 220% 100%;
+/* Static, muted accent for the hero phrase — no animation */
+.accent-text {
+  background: linear-gradient(100deg, #9db8e8, #6ea6ff 45%, #49c7ee);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shimmer-sweep 7s linear infinite;
-}
-
-@keyframes shimmer-sweep {
-  to { background-position: -220% 0; }
 }
 
 /* ── Buttons ────────────────────────────────────── */
@@ -144,67 +123,52 @@ section[id] {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 14px 28px;
-  border-radius: 999px;
-  font-size: 15px;
+  gap: 8px;
+  padding: 12px 22px;
+  border-radius: 10px;
+  font-size: 14.5px;
   font-weight: 600;
   letter-spacing: -0.01em;
   cursor: pointer;
   border: 1px solid transparent;
-  transition: transform 0.25s var(--ease-out), box-shadow 0.3s ease,
-    background 0.25s ease, border-color 0.25s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
   white-space: nowrap;
 
-  .arrow {
-    transition: transform 0.25s var(--ease-out);
-  }
-
-  &:hover .arrow {
-    transform: translateX(4px);
-  }
-
   &:active {
-    transform: scale(0.98);
+    opacity: 0.85;
   }
 }
 
 .btn-primary {
-  background: var(--gradient);
-  color: #030a14;
-  box-shadow: 0 4px 24px rgba(30, 91, 255, 0.35);
+  background: #ffffff;
+  color: #0a0f1c;
 
   &:hover {
-    box-shadow: var(--glow-cyan);
-    transform: translateY(-1px);
+    background: #d9e6ff;
   }
 }
 
 .btn-ghost {
-  background: rgba(140, 170, 255, 0.06);
-  border-color: var(--border);
+  background: transparent;
+  border-color: var(--border-strong);
   color: var(--text);
-  backdrop-filter: blur(12px);
 
   &:hover {
-    border-color: var(--border-strong);
-    background: rgba(140, 170, 255, 0.11);
-    transform: translateY(-1px);
+    border-color: rgba(140, 170, 255, 0.45);
+    background: rgba(140, 170, 255, 0.05);
   }
 }
 
-/* ── Glass card base ────────────────────────────── */
+/* ── Card base — flat, hairline ─────────────────── */
 .card {
   position: relative;
   background: var(--panel);
   border: 1px solid var(--border);
   border-radius: var(--radius);
-  backdrop-filter: blur(14px);
-  transition: border-color 0.3s ease, transform 0.35s var(--ease-out),
-    box-shadow 0.35s ease;
+  transition: border-color 0.25s ease;
 }
 
-/* Cursor spotlight (set --mx/--my via SpotlightDirective) */
+/* Cursor spotlight — barely-there */
 .spot {
   overflow: hidden;
 
@@ -214,9 +178,9 @@ section[id] {
     inset: 0;
     border-radius: inherit;
     background: radial-gradient(
-      340px circle at var(--mx, 50%) var(--my, 50%),
-      rgba(0, 212, 255, 0.1),
-      transparent 62%
+      320px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(140, 190, 255, 0.06),
+      transparent 60%
     );
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -228,11 +192,11 @@ section[id] {
   }
 }
 
-/* ── Scroll reveal (RevealDirective adds .in-view) ─ */
+/* ── Scroll reveal ──────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(26px);
-  transition: opacity 0.8s var(--ease-out), transform 0.8s var(--ease-out);
+  transform: translateY(18px);
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
   transition-delay: var(--reveal-delay, 0s);
 
   &.in-view {
@@ -241,7 +205,7 @@ section[id] {
   }
 }
 
-/* ── Scroll progress (CSS scroll-driven, progressive) */
+/* ── Scroll progress (progressive) ──────────────── */
 .scroll-progress {
   display: none;
 }
@@ -253,8 +217,8 @@ section[id] {
     top: 0;
     left: 0;
     right: 0;
-    height: 2px;
-    background: var(--gradient);
+    height: 1px;
+    background: rgba(140, 190, 255, 0.5);
     transform-origin: 0 50%;
     transform: scaleX(0);
     animation: scroll-grow linear;
