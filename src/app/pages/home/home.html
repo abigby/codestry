@@ -57,7 +57,11 @@
     <div class="hero-stats">
       @for (stat of stats; track stat.label; let i = $index) {
         <div class="stat" appReveal [revealDelay]="i * 90">
-          <span class="stat-value gradient-text">{{ stat.value }}</span>
+          @if (stat.count !== null) {
+            <span class="stat-value gradient-text" [appCountUp]="stat.count" [countSuffix]="stat.suffix ?? ''"></span>
+          } @else {
+            <span class="stat-value gradient-text">{{ stat.display }}</span>
+          }
           <span class="stat-label">{{ stat.label }}</span>
         </div>
       }
