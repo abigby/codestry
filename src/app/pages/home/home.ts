@@ -4,6 +4,7 @@ import { ContactForm } from '../../components/contact-form/contact-form';
 import { Aurora } from '../../components/aurora/aurora';
 import { RevealDirective } from '../../shared/reveal.directive';
 import { SpotlightDirective } from '../../shared/spotlight.directive';
+import { CountUpDirective } from '../../shared/count-up.directive';
 
 interface Service {
   icon: 'web' | 'ai' | 'assist' | 'a11y' | 'ux' | 'cloud';
@@ -26,16 +27,16 @@ interface StackGroup {
 
 @Component({
   selector: 'app-home',
-  imports: [RouterLink, ContactForm, Aurora, RevealDirective, SpotlightDirective],
+  imports: [RouterLink, ContactForm, Aurora, RevealDirective, SpotlightDirective, CountUpDirective],
   templateUrl: './home.html',
   styleUrl: './home.scss',
 })
 export class Home {
-  protected readonly stats = [
-    { value: '12+', label: 'years of senior engineering' },
-    { value: '6', label: 'industries delivered in' },
-    { value: '508', label: 'accessibility as a baseline' },
-    { value: 'AI', label: 'assisted delivery, human-reviewed' },
+  protected readonly stats: { count: number | null; display?: string; suffix?: string; label: string }[] = [
+    { count: 12, suffix: '+', label: 'years of senior engineering' },
+    { count: 6, label: 'industries delivered in' },
+    { count: 508, label: 'accessibility as a baseline' },
+    { count: null, display: 'AI', label: 'assisted delivery, human-reviewed' },
   ];
 
   protected readonly industries = [
